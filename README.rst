@@ -18,3 +18,26 @@ to create a local credentials files and use ``AWS_CREDENTIAL_FILE``::
     aws_secret_access_key = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
     > AWS_CREDENTIAL_FILE=creds.ini python -m gepetto.up
+
+
+Implementation
+**************
+
+Uses ``ami-3b65664f`` from `alestic.com <http://alestic.com>`_ to create an
+Ubuntu 12.04 LTS server instance and utilises user-data to run the included
+``bootstrap.sh`` which performs the following tasks to prepare the server
+
+* sets the hostname to ``jenkinsalestic$TIMESTAMP.adaptive``
+* downloads the required jenkins plugins (git, violations, performance, cobertura)
+* installs and starts puppet
+
+The puppetmaster is configured to autosign certificates and so the new jenkins
+server should be setup via puppet immediately
+
+
+TODO
+****
+
+There should be a dns entry (perhaps ci.adaptivelab.co.uk) pointing to an
+elastic ip that can be re-allocated to any new jenkins instances to minimise
+disruption
