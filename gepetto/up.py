@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import os
 import time
 from boto.ec2 import connect_to_region
 from boto import config
@@ -18,7 +19,7 @@ def connection():
 
 
 def userdata():
-    with open('bootstrap.sh', 'r') as fo:
+    with open(os.path.join(os.path.dirname(__file__), 'bootstrap.sh'), 'r') as fo:
         return fo.read()
 
 

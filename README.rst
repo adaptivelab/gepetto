@@ -41,3 +41,7 @@ TODO
 There should be a dns entry (perhaps ci.adaptivelab.co.uk) pointing to an
 elastic ip that can be re-allocated to any new jenkins instances to minimise
 disruption
+
+The puppet-builder templates could probably be bundled into this
+
+Monit or similar to tell when a jenkins server needs rebuilding
