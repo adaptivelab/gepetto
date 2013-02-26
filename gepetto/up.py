@@ -30,7 +30,7 @@ def security_groups():
 def main():
     conn = connection()
     reservations = conn.run_instances(AMI_ID,
-                                      instance_type='t1.micro',
+                                      instance_type='m1.medium',
                                       key_name='jenkins',
                                       security_groups=security_groups(),
                                       user_data=userdata(), max_count=1)
